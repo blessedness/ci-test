@@ -10,6 +10,7 @@ echo 'github'
 echo $GITHUB_REF
 echo $GITHUB_REF_NAME
 echo $GITHUB_SHA
+echo $GITHUB_EVENT_PATH
 
 BODY="$(jq '.comment.body' $GITHUB_EVENT_PATH)"
 ISSUE_NUMBER="$(jq '.issue.number' $GITHUB_EVENT_PATH)"
