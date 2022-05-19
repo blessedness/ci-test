@@ -5,7 +5,9 @@ time=$(date)
 echo "::set-output name=time::$time"
 
 
-echo ENV
+echo 'github'
+echo $GITHUB_REF
+echo $GITHUB_REF_NAME
 
 BODY="$(jq '.comment.body' $GITHUB_EVENT_PATH)"
 ISSUE_NUMBER="$(jq '.issue.number' $GITHUB_EVENT_PATH)"
