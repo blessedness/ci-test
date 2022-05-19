@@ -18,12 +18,12 @@ if [[ $BODY == *".take"* ]]; then
 fi
 
 echo "Assigning issue $ISSUE_NUMBER to $LOGIN"
-echo "Using the link: https://api.github.com/repos/$REPO/pull/$PULL_NUMBER"
+echo "Using the link: https://api.github.com/repos/$REPO/pull/$PR_NUMBER"
 #curl -H "Authorization: token $GITHUB_TOKEN" -d '{"assignees":["'"$LOGIN"'"]}' https://api.github.com/repos/$REPO/pull/$PULL_NUMBER
 
 curl --location --request POST "https://api.github.com/repos/$REPO/pulls/$PR_NUMBER/comments" \
 --header 'Accept: application/vnd.github.v3+json' \
---header "Authorization: Token $GITHUB_TOKEN" \
+--header "Authorization: Token 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" \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "body": "Great stuff!",
