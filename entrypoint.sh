@@ -4,6 +4,9 @@ echo "Hello $1"
 time=$(date)
 echo "::set-output name=time::$time"
 
+
+echo ENV
+
 BODY="$(jq '.comment.body' $GITHUB_EVENT_PATH)"
 ISSUE_NUMBER="$(jq '.issue.number' $GITHUB_EVENT_PATH)"
 LOGIN="$(jq '.comment.user.login' $GITHUB_EVENT_PATH | tr -d \")"
