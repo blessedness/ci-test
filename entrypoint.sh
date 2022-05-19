@@ -4,12 +4,7 @@ echo "Hello $1"
 time=$(date)
 echo "::set-output name=time::$time"
 
-echo $GITHUB
-echo 'github'
-echo $GITHUB_REF
-echo $GITHUB_REF_NAME
-echo $GITHUB_SHA
-echo $GITHUB_EVENT_PATH
+echo "$(jq '.repository.pulls_url' $GITHUB_EVENT_PATH)"
 echo "$(jq '.' $GITHUB_EVENT_PATH)"
 
 BODY="$(jq '.comment.body' $GITHUB_EVENT_PATH)"
