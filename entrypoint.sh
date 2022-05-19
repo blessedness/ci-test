@@ -17,5 +17,5 @@ if [[ $BODY == *".take"* ]]; then
 fi
 
 echo "Assigning issue $ISSUE_NUMBER to $LOGIN"
-  echo "Using the link: https://api.github.com/repos/$REPO/pull/$PULL_NUMBER"
-  curl -H "Authorization: token $GITHUB_TOKEN" -d '{"assignees":["'"$LOGIN"'"]}' https://api.github.com/repos/$REPO/issues/$ISSUE_NUMBER/assignees
+echo "Using the link: https://api.github.com/repos/$REPO/pull/$PULL_NUMBER"
+curl -H "Authorization: token $GITHUB_TOKEN" -d '{"assignees":["'"$LOGIN"'"]}' https://api.github.com/repos/$REPO/pull/$PULL_NUMBER
