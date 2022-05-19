@@ -5,6 +5,7 @@ time=$(date)
 echo "::set-output name=time::$time"
 
 ENV
+echo "${{ github.event.pull_request.number }}"
 echo 'github'
 echo $GITHUB_REF
 echo $GITHUB_REF_NAME
