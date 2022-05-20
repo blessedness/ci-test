@@ -28,18 +28,7 @@ fi
 echo "Using the link: $URL"
 curl -H "Authorization: Bearer $GITHUB_TOKEN" -H "Accept: application/vnd.github.v3+json" -d '{"body": "Great stuff!","commit_id": "'"$GITHUB_SHA"'","path": "app/Http/Controllers/Controller.php","start_line": 13,"start_side": "RIGHT","line": 16,"side": "RIGHT"}' POST $URL
 
-curl -H 'Accept: application/vnd.github.v3+json' \
--H "Authorization: Bearer $GITHUB_TOKEN" \
--H 'Content-Type: application/json' \
--d "{
-    \"body\": \"Great stuff!\",
-    \"commit_id\": \"$GITHUB_SHA\",
-    \"path\": \"app/Http/Controllers/Controller.php\",
-    \"start_line\": 13,
-    \"start_side\": \"RIGHT\",
-    \"line\": 16,
-    \"side\": \"RIGHT\"
-}" "$URL"
+curl -H 'Accept: application/vnd.github.v3+json'-H "Authorization: Bearer $GITHUB_TOKEN" -d "{\"body\": \"Great stuff!\", \"commit_id\": \"$GITHUB_SHA\", \"path\": \"app/Http/Controllers/Controller.php\", \"start_line\": 13, \"start_side\": \"RIGHT\", \"line\": 16, \"side\": \"RIGHT\"}" "$URL"
 
 #curl --location --request POST "https://api.github.com/repos/$REPO/pulls/$PR_NUMBER/comments" \
 #--header 'Accept: application/vnd.github.v3+json' \
