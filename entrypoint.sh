@@ -26,7 +26,7 @@ echo "Using the link: https://api.github.com/repos/$REPO/pull/$PR_NUMBER"
 
 curl --location --request POST "https://api.github.com/repos/$REPO/pulls/$PR_NUMBER/comments" \
 --header 'Accept: application/vnd.github.v3+json' \
---header "Authorization: Token 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" \
+--header "Authorization: Token $GITHUB_TOKEN" \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "body": "Great stuff!",
