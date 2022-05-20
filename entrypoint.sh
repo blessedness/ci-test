@@ -26,9 +26,21 @@ if [[ $BODY == *".take"* ]]; then
 fi
 
 echo "Using the link: $URL"
-curl -H "Authorization: Bearer $GITHUB_TOKEN" -H "Accept: application/vnd.github.v3+json" -d '{"body": "Great stuff!","commit_id": "'"$GITHUB_SHA"'","path": "app/Http/Controllers/Controller.php","start_line": 13,"start_side": "RIGHT","line": 16,"side": "RIGHT"}' POST $URL
+curl -H "Authorization: Bearer $GITHUB_TOKEN" -H "Accept: application/vnd.github.v3+json" -d '{"body": "Great stuff!","commit_id": "'"$GITHUB_SHA"'","path": "app/Http/Controllers/Controller.php","start_line": 13,"start_side": "RIGHT","line": 16,"side": "RIGHT"}' PORT $URL
 
-curl -H 'Accept: application/vnd.github.v3+json'-H "Authorization: Bearer $GITHUB_TOKEN" -d "{\"body\": \"Great stuff!\", \"commit_id\": \"$GITHUB_SHA\", \"path\": \"app/Http/Controllers/Controller.php\", \"start_line\": 13, \"start_side\": \"RIGHT\", \"line\": 16, \"side\": \"RIGHT\"}" "$URL"
+curl --verbose --location --request POST "$URL" \
+--header 'Accept: application/vnd.github.v3+json' \
+--header "Authorization: Bearer $GITHUB_TOKEN" \
+--header 'Content-Type: application/json' \
+--data-raw "{
+    \"body\": \"Great stuff!\",
+    \"commit_id\": \"$GITHUB_SHA\",
+    \"path\": \"app/Http/Controllers/Controller.php\",
+    \"start_line\": 13,
+    \"start_side\": \"RIGHT\",
+    \"line\": 16,
+    \"side\": \"RIGHT\"
+}"
 
 #curl --location --request POST "https://api.github.com/repos/$REPO/pulls/$PR_NUMBER/comments" \
 #--header 'Accept: application/vnd.github.v3+json' \
