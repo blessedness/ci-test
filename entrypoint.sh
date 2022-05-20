@@ -22,6 +22,7 @@ if [[ $BODY == *".take"* ]]; then
 fi
 
 echo "Using the link: $URL"
+echo "Token: $GITHUB_TOKEN"
 curl -H "Authorization: Token $GITHUB_TOKEN" -H "Accept: application/vnd.github.v3+json" -d '{"body": "Great stuff!","commit_id": "'"$GITHUB_SHA"'","path": "app/Http/Controllers/Controller.php","start_line": 13,"start_side": "RIGHT","line": 16,"side": "RIGHT"}' $URL
 
 curl --location --request POST $URL \
