@@ -1,6 +1,9 @@
 # action.yml
 name: 'Hello World'
 description: 'Greet someone and record the time'
+branding:
+  icon: 'message-circle'
+  color: 'blue'
 inputs:
   who-to-greet:  # id of input
     description: 'Who to greet'
@@ -16,4 +19,4 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.who-to-greet }}
+    - ${{ inputs.GITHUB_TOKEN }}
