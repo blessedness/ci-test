@@ -4,8 +4,8 @@ echo "Hello"
 time=$(date)
 echo "::set-output name=time::$time"
 
-echo "$(jq '.repository.pulls_url' $GITHUB_EVENT_PATH)"
-echo "$(jq '.' $GITHUB_EVENT_PATH)"
+#echo "$(jq '.repository.pulls_url' $GITHUB_EVENT_PATH)"
+#echo "$(jq '.' $GITHUB_EVENT_PATH)"
 
 BODY="$(jq '.comment.body' $GITHUB_EVENT_PATH)"
 ISSUE_NUMBER="$(jq '.issue.number' $GITHUB_EVENT_PATH)"
