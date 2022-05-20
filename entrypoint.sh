@@ -22,18 +22,10 @@ fi
 
 echo "Assigning issue $ISSUE_NUMBER to $LOGIN"
 echo "Using the link: https://api.github.com/repos/$REPO/pull/$PR_NUMBER"
-#curl -H "Authorization: token $GITHUB_TOKEN" -d '{"assignees":["'"$LOGIN"'"]}' https://api.github.com/repos/$REPO/pull/$PULL_NUMBER
+curl -H "Authorization: token $GITHUB_TOKEN" -d '{"body": "Great stuff!","commit_id": "'$GITHUB_SHA'","path": "app/Http/Controllers/Controller.php","start_line": 13,"start_side": "RIGHT","line": 16,"side": "RIGHT"}' https://api.github.com/repos/$REPO/pulls/$PR_NUMBER/comments
 
-curl --location --request POST "https://api.github.com/repos/$REPO/pulls/$PR_NUMBER/comments" \
---header 'Accept: application/vnd.github.v3+json' \
---header "Authorization: Token $GITHUB_TOKEN" \
---header 'Content-Type: application/json' \
---data-raw '{
-    "body": "Great stuff!",
-    "commit_id": "'$GITHUB_SHA'",
-    "path": "app/Http/Controllers/Controller.php",
-    "start_line": 13,
-    "start_side": "RIGHT",
-    "line": 16,
-    "side": "RIGHT"
-}'
+#curl --location --request POST "https://api.github.com/repos/$REPO/pulls/$PR_NUMBER/comments" \
+#--header 'Accept: application/vnd.github.v3+json' \
+#--header "Authorization: Token $GITHUB_TOKEN" \
+#--header 'Content-Type: application/json' \
+#--data-raw '{"body": "Great stuff!","commit_id": "'$GITHUB_SHA'","path": "app/Http/Controllers/Controller.php","start_line": 13,"start_side": "RIGHT","line": 16,"side": "RIGHT"}'
