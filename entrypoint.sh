@@ -14,7 +14,7 @@ REPO="$(jq '.repository.full_name' $GITHUB_EVENT_PATH | tr -d \")"
 #PULL_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
 PR_NUMBER=$(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')
 URL=https://api.github.com/repos/$REPO/pulls/$PR_NUMBER/comments
-GITHUB_TOKEN=$1
+GITHUB_TOKEN="$1"
 
 if [[ $BODY == *".take"* ]]; then
   echo "Assigning issue $ISSUE_NUMBER to $LOGIN"
